@@ -40,7 +40,7 @@ const agents = [
     background:
       "./assets/images/backgroundJett.png",
     roleIcon:
-      "../assets/images/Duelist.png",
+      "./assets/images/Duelist.png",
   },
   {
     id: "phoenix",
