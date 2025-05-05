@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palorant - News</title>
+    <link rel="stylesheet" href="./css/news.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./assets/images/Palorant3.png" rel="shortcut icon" class="website-logo">
+  </head>
+  <body>
+    <div class="navbar-container">
+      <div class="container">
+        <div class="navbar-content">
+          <div class="logo-palorant">
+            <img
+              src="./assets/images/Palo2.png"
+              class="image-palorant"
+              alt="Logo"
+            />
+          </div>
+          <div class="nav-links">
+            <a href="./index.html" class="link">Home</a>
+            <a href="./agents.html" class="link">Agents</a>
+            <a href="./maps.html" class="link">Maps</a>
+            <a href="./news.html" class="link active">News</a>
+            <a href="./report.html" class="link">Report</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="news-header">
+      <h1>Latest News</h1>
+    </div> -->
+
+    <div class="maps-hero">
+      <div class="hero-content">
+        <h1>PALORANT NEWS</h1>
+        <p>Stay updated with the latest Palorant news, events, and patch notes</p>
+      </div>
+    </div>
+
+    <main class="news-container">
+      <!-- News Listing View -->
+      <div class="news-listing" id="newsListing">
+        <article class="news-item featured" data-id="featured">
+          <div class="news-image">
+            <img src="./assets/images/Beejpg.jpg" alt="New Agent Reveal" />
+            <span class="news-tag">Featured</span>
+          </div>
+          <div class="news-content">
+            <h2>New Agent Coming Next Week: Meet "Phantom"</h2>
+            <div class="news-meta">
+              <span class="news-date">April 22, 2025</span>
+            </div>
+            <p>
+              Get ready to welcome our newest agent to the battlefield. Phantom
+              brings unprecedented stealth abilities and tactical advantages
+              that will change the way you approach each match.
+            </p>
+            <a href="#" class="news-link" data-id="featured">Read More</a>
+          </div>
+        </article>
+
+        <div class="news-grid">
+          <article class="news-item" data-id="1">
+            <div class="news-image">
+              <img src="./assets/images/Balance.jpg" alt="Patch Notes" />
+              <span class="news-tag">Update</span>
+            </div>
+            <div class="news-content">
+              <h3>Patch 6.2: Balance Changes and Bug Fixes</h3>
+              <div class="news-meta">
+                <span class="news-date">April 18, 2025</span>
+              </div>
+              <p>
+                This patch brings major balance adjustments to several agents
+                and weapons, addressing community feedback.
+              </p>
+              <a href="#" class="news-link" data-id="1">Read More</a>
+            </div>
+          </article>
+
+          <article class="news-item" data-id="2">
+            <div class="news-image">
+              <img src="./assets/images/NightMarket.jpg" alt="Night Market" />
+              <span class="news-tag">Event</span>
+            </div>
+            <div class="news-content">
+              <h3>Night Market Returns With Exclusive Skins</h3>
+              <div class="news-meta">
+                <span class="news-date">April 15, 2025</span>
+              </div>
+              <p>
+                The popular Night Market event is back with rare weapon skins at
+                discounted prices.
+              </p>
+              <a href="#" class="news-link" data-id="2">Read More</a>
+            </div>
+          </article>
+
+          <article class="news-item" data-id="3">
+            <div class="news-image">
+              <img src="./assets/images/Global Champ.jpg" alt="Championship" />
+              <span class="news-tag">Esports</span>
+            </div>
+            <div class="news-content">
+              <h3>Global Championship Finals Breaks Records</h3>
+              <div class="news-meta">
+                <span class="news-date">April 12, 2025</span>
+              </div>
+              <p>
+                Last weekend's thrilling finals attracted over 2 million
+                concurrent viewers worldwide.
+              </p>
+              <a href="#" class="news-link" data-id="3">Read More</a>
+            </div>
+          </article>
+
+          <article class="news-item" data-id="4">
+            <div class="news-image">
+              <img src="./assets/images/MapsUpdate.jpg" alt="New Map" />
+              <span class="news-tag">Update</span>
+            </div>
+            <div class="news-content">
+              <h3>New Map "Nexus" Coming in Season 7</h3>
+              <div class="news-meta">
+                <span class="news-date">April 10, 2025</span>
+              </div>
+              <p>
+                Get a first look at Nexus, our upcoming map set in a futuristic
+                research facility.
+              </p>
+              <a href="#" class="news-link" data-id="4">Read More</a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Detailed News View (hidden by default) -->
+      <div class="news-detail" id="newsDetail" style="display: none">
+        <button class="back-button" id="backButton">← Back to News</button>
+        <article class="detailed-news">
+          <div class="detailed-image">
+            <img id="detailImage" src="" alt="News Detail" />
+            <span class="news-tag" id="detailTag">Update</span>
+          </div>
+          <div class="detailed-content">
+            <h2 id="detailTitle">News Title</h2>
+            <div class="news-meta">
+              <span class="news-date" id="detailDate">April 22, 2025</span>
+            </div>
+            <div class="news-body" id="detailBody">
+              <p>News content goes here...</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <section class="cta-section">
+      <footer class="footer-palorant">
+        <div class="footer-container">
+          <div class="footer-top">
+            <img
+              src="./assets/images/GiotWhite-01.png"
+              alt="Palorant Logo"
+              class="footer-logo"
+            />
+            <nav class="footer-nav">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">About Us</a>
+              <a href="#">Contact Us</a>
+              <a href="#">Help Center</a>
+            </nav>
+          </div>
+
+          <div class="footer-socials footer-socials active">
+            <a href="#"
+              ><img src="./assets/images/Facebook (2).png" alt="Facebook"
+            /></a>
+            <a href="#"
+              ><img src="./assets/images/Instagram.png" alt="Instagram"
+            /></a>
+            <a href="#"
+              ><img src="./assets/images/Youtube.png" alt="YouTube"
+            /></a>
+          </div>
+
+          <div class="footer-bottom active">
+            <p>&copy; 2025 Palorant. All rights reserved.</p>
+            <p>Fan-made project inspired by Palorant universe.</p>
+          </div>
+        </div>
+      </footer>
+    </section>
+
+    <script src="./js/news.js"></script>
+  </body>
+</html>

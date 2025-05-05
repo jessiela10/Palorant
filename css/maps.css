@@ -1,0 +1,603 @@
+:root {
+    --navbar-bg: #2b2b2b;
+    --link-color: #f5f5f5;
+    --hover-bg: #8e1616;
+    --active-bg: #a31d1d;
+    --active-color: #fff8f0;
+    --primary: #111111;
+    --footer-bg: #1a1a1a;
+    --card-bg: #1e1e1e;
+    --accent-color: #a31d1d;
+    --text-primary: #f5f5f5;
+    --text-secondary: #cccccc;
+}
+
+@font-face {
+    font-family: "Miligant";
+    src: url("../assets/fonts/Miligant/Miligant-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "AirstrikRegular";
+    src: url("../assets/fonts/Airstrik/airstrike.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Airstrik3d";
+    src: url("../assets/fonts/Airstrik/airstrike3d.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Airstriklaser";
+    src: url("../assets/fonts/Airstrik/airstrikelaser.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "AirstrikBold";
+    src: url("../assets/fonts/Airstrik/airstrikebold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "AirstrikExpand";
+    src: url("../assets/fonts/Airstrik/airstrikeexpand.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "AirstrikOut";
+    src: url("../assets/fonts/Airstrik/airstrikeout.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "AirstrikGrad";
+    src: url("../assets/fonts/Airstrik/airstrikegrad.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "AirstrikCond";
+    src: url("../assets/fonts/Airstrik/airstrikecond.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--primary);
+    font-family: Arial, sans-serif;
+    color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-palorant {
+    width: 32px;
+    height: 32px;
+    margin: 8px 16px;
+    transition: transform 0.3s ease;
+}
+
+.image-palorant {
+    width: 32px;
+    height: 32px;
+    object-fit: contain
+}
+
+.logo-palorant:hover {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.navbar-container {
+    background-color: var(--navbar-bg);
+    width: 100%;
+    height: 48px;
+    display: flex;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: absolute;
+    left: 0;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.nav-links a {
+    font-size: 0.95rem;
+    color: var(--link-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    height: 100%;
+    color: #f5f5f5;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    /* <<< TAMBAHKAN INI */
+}
+
+.link:hover {
+    background-color: var(--hover-bg);
+    color: white;
+}
+
+.link.active {
+    background-color: var(--active-bg);
+    color: var(--active-color);
+}
+
+.link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    animation: slideRight 0.3s forwards;
+}
+
+@media (max-width: 768px) {
+    .nav-links a {
+        font-size: 0.85rem;
+        padding: 0 12px;
+    }
+
+    .logo-palorant {
+        width: 28px;
+        height: 28px;
+    }
+
+    .navbar-container {
+        height: 44px;
+    }
+}
+
+/* Maps Hero Section */
+.maps-hero {
+    background-color:var(--navbar-bg) ;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.maps-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent-color);
+}
+
+.hero-content h1 {
+    font-family: "AirstrikCond", sans-serif;
+    font-size: 4rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-family: "Arial", sans-serif;
+    letter-spacing: 1.3px;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+/* Maps Container */
+.maps-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+}
+
+.map-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.map-image {
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+}
+
+.map-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.map-card:hover .map-image img {
+    transform: scale(1.05);
+}
+
+.map-info {
+    padding: 25px;
+}
+
+.map-info h2 {
+    font-family: "AirstrikOut", sans-serif;
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.map-info h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    height: 3px;
+    background: var(--accent-color);
+}
+
+.map-location {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.map-description p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.strategic-points h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+}
+
+.strategic-points ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.strategic-points li {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.strategic-points li::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+}
+
+/* Footer CSS */
+.footer-palorant {
+    background-color: #1a1a1a;
+    color: #f5f5f5;
+    padding: 40px 20px 20px;
+    font-size: 0.95rem;
+    position: relative;
+    margin-top: auto;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    opacity: 100;
+}
+
+.footer-top.active {
+    opacity: 1;
+    transition: opacity 0.6s ease;
+}
+
+.footer-logo {
+    width: 48px;
+    height: 48px;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: rotate(10deg) scale(1.1);
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+}
+
+.footer-nav a {
+    color: #f5f5f5;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.footer-nav a:hover {
+    color: #a31d1d;
+    transform: translateY(-2px);
+}
+
+.footer-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #a31d1d;
+    transition: width 0.3s ease;
+}
+
+.footer-nav a:hover::after {
+    width: 100%;
+}
+
+.footer-socials {
+    margin: 24px 0;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.footer-socials.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s ease 0.2s;
+}
+
+.footer-socials img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.footer-socials a:hover img {
+    transform: scale(1.2) rotate(10deg);
+    filter: brightness(0) invert(0.8) sepia(1) saturate(5) hue-rotate(320deg);
+}
+
+.footer-bottom {
+    font-size: 0.85rem;
+    color: #ccc;
+    opacity: 0;
+}
+
+.footer-bottom.active {
+    opacity: 1;
+    transition: opacity 0.6s ease 0.4s;
+}
+
+.footer-bottom p {
+    margin: 4px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .map-image {
+        height: 300px;
+    }
+
+    .map-info h2 {
+        font-size: 1.8rem;
+    }
+
+    .strategic-points ul {
+        padding-left: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .map-image {
+        height: 220px;
+    }
+
+    .map-info {
+        padding: 15px;
+    }
+
+    .map-info h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Add these styles to your existing CSS */
+
+.map-carousel {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 100%;
+}
+
+.carousel-item {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.carousel-control:hover {
+    background: rgba(163, 29, 29, 0.8);
+}
+
+.carousel-control.prev {
+    left: 20px;
+}
+
+.carousel-control.next {
+    right: 20px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--accent-color);
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    .map-carousel,
+    .carousel-inner,
+    .carousel-item {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .map-carousel,
+    .carousel-inner,
+    .carousel-item {
+        height: 220px;
+    }
+
+    .carousel-control {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+}

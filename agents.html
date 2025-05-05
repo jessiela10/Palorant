@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agents</title>
+    <link rel="stylesheet" href="./css/agents.css" />
+    <link href="./assets/images/Palorant3.png" rel="shortcut icon" class="website-logo">
+  </head>
+  <body>
+    <div class="navbar-container">
+      <div class="container">
+        <div class="navbar-content">
+          <div class="logo-palorant">
+            <img
+              src="./assets/images/Palo2.png"
+              class="image-palorant"
+              alt="Logo"
+            />
+          </div>
+          <div class="nav-links">
+            <a href="./index.html" class="link">Home</a>
+            <a href="./agents.html" class="link active">Agents</a>
+            <a href="./maps.html" class="link">Maps</a>
+            <a href="./news.html" class="link">News</a>
+            <a href="report.html" class="link">Report</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main>
+
+      <div class="maps-hero">
+        <div class="hero-content">
+          <h1>PALORANT AGENTS</h1>
+          <p>Palorant agents are unique fighters with special abilities. Choose your hero and win the battle !</p>
+        </div>
+      </div>
+
+      <div class="agents-grid" id="agentsContainer">
+        <div class="agent-card" data-id="jett">
+          <div
+            class="agent-bg"
+            src="./assets/images/backgroundJett.png"
+          >
+            <img
+              class="agent-portrait"
+              src="./assets/images/Jett.png"
+              alt="Jett"
+            />
+          </div>
+          <div class="agent-info">
+            <h2 class="agent-name">Jett</h2>
+            <div class="agent-role" style="background-color: #8bd3f7">
+              Duelist
+            </div>
+            <p class="agent-bio">
+              Representing South Korea, Jett’s agile and evasive style lets her
+              take risks and eliminate enemies swiftly.
+            </p>
+          </div>
+        </div>
+
+        <div class="agent-card" data-id="phoenix">
+          <div
+            class="agent-bg"
+            src="./assets/images/backgroundPhoneix.png";
+          >
+            <img
+              class="agent-portrait"
+              src="./assets/images/Phoniex.png"
+              alt="Phoenix"
+            />
+          </div>
+          <div class="agent-info">
+            <h2 class="agent-name">Phoenix</h2>
+            <div class="agent-role" style="background-color: #fbb040">
+              Duelist
+            </div>
+            <p class="agent-bio">
+              Hailing from the UK, Phoenix uses fire and flair to dominate the
+              battlefield on his own terms.
+            </p>
+          </div>
+        </div>
+
+        <div class="agent-card" data-id="sova">
+          <div
+            class="agent-bg";
+            src="./assets/images/Sova.png"
+          >
+            <img
+              class="agent-portrait"
+              src="./assets/images/Sova.png"
+              alt="Sova"
+            />
+          </div>
+          <div class="agent-info">
+            <h2 class="agent-name">Sova</h2>
+            <div class="agent-role" style="background-color: #4bb3fd">
+              Initiator
+            </div>
+            <p class="agent-bio">
+              From Russia's tundra, Sova tracks enemies with precision, using
+              his bow and recon tools.
+            </p>
+          </div>
+        </div>
+
+        <div class="agent-card" data-id="sage">
+          <div
+            class="agent-bg"
+            src="./assets/images/backgroundSage.png"
+          >
+            <img
+              class="agent-portrait"
+              src="./assets/images/Sage.png"
+              alt="Sage"
+            />
+          </div>
+          <div class="agent-info">
+            <h2 class="agent-name">Sage</h2>
+            <div class="agent-role" style="background-color: #90d26d">
+              Sentinel
+            </div>
+            <p class="agent-bio">
+              Sage creates safety and balance with healing and revive skills,
+              holding the line for her team.
+            </p>
+          </div>
+        </div>
+
+        <div class="agent-card" data-id="brimstone">
+          <div
+            class="agent-bg";
+            src="./assets/images/backgroundBrim.png";
+          >
+            <img
+              class="agent-portrait"
+              src="./assets/images/BrimStone.png"
+              alt="Brimstone"
+            />
+          </div>
+          <div class="agent-info">
+            <h2 class="agent-name">Brimstone</h2>
+            <div class="agent-role" style="background-color: #d77a61">
+              Controller
+            </div>
+            <p class="agent-bio">
+              Brimstone delivers precision fire support from the sky, empowering
+              his team with tactical strength.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal" id="agentModal" style="display: none">
+      <div class="modal-content">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <div class="modal-header" id="modalHeader">
+          <img
+            class="modal-portrait"
+            id="modalPortrait"
+            src=""
+            alt="Agent Portrait"
+          />
+        </div>
+        <div class="modal-body">
+          <div class="modal-agent-info">
+            <h2 class="modal-agent-name" id="modalAgentName">Agent Name</h2>
+            <div class="modal-agent-role" id="modalAgentRole">Role</div>
+            <p class="modal-agent-description" id="modalAgentDescription">
+              Description
+            </p>
+          </div>
+          <div class="modal-abilities">
+            <h3 class="abilities-title">Abilities</h3>
+            <div id="modalAbilities"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <section class="cta-section">
+      <footer class="footer-palorant">
+        <div class="footer-container">
+          <div class="footer-top">
+            <img
+              src="./assets/images/giotWhite-01.png"
+              alt="Palorant Logo"
+              class="footer-logo"
+            />
+            <nav class="footer-nav">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">About Us</a>
+              <a href="#">Contact Us</a>
+              <a href="#">Help Center</a>
+            </nav>
+          </div>
+
+          <div class="footer-socials footer-socials active">
+            <a href="#"
+              ><img src="./assets/images/Facebook (2).png" alt="Facebook"
+            /></a>
+            <a href="#"
+              ><img src="./assets/images/Instagram.png" alt="Instagram"
+            /></a>
+            <a href="#"
+              ><img src="./assets/images/Youtube.png" alt="YouTube"
+            /></a>
+          </div>
+
+          <div class="footer-bottom active">
+            <p>&copy; 2025 Palorant. All rights reserved.</p>
+            <p>Fan-made project inspired by Palorant universe.</p>
+          </div>
+        </div>
+      </footer>
+    </section>
+
+    <script src="./js/agents.js" defer></script>
+  </body>
+</html>

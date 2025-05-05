@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./assets/images/Palorant3.png" rel="shortcut icon" class="website-logo">
+    <title>Report Bug</title>
+    <style>
+      :root {
+        --navbar-bg: #2b2b2b;
+        --link-color: #f5f5f5;
+        --hover-bg: #8e1616;
+        --active-bg: #a31d1d;
+        --active-color: #fff8f0;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #1a1a1a;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .logo-palorant {
+        width: 32px;
+        height: 32px;
+        margin: 8px 16px;
+        transition: transform 0.3s ease;
+      }
+
+      .image-palorant {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+      }
+
+      .logo-palorant:hover {
+        transform: rotate(10deg) scale(1.1);
+      }
+
+      .navbar-container {
+        background-color: var(--navbar-bg);
+        width: 100%;
+        height: 48px;
+        display: flex;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .navbar-content {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        position: absolute;
+        left: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+      }
+
+      .nav-links a {
+        font-size: 0.95rem;
+        color: var(--link-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+        height: 100%;
+        color: #f5f5f5;
+        text-decoration: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        position: relative;
+        /* <<< TAMBAHKAN INI */
+      }
+
+      .link:hover {
+        background-color: var(--hover-bg);
+        color: white;
+      }
+
+      .link.active {
+        background-color: var(--active-bg);
+        color: var(--active-color);
+      }
+
+      .link.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+        animation: slideRight 0.3s forwards;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links a {
+          font-size: 0.85rem;
+          padding: 0 12px;
+        }
+
+        .logo-palorant {
+          width: 28px;
+          height: 28px;
+        }
+
+        .navbar-container {
+          height: 44px;
+        }
+      }
+
+      .report-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 4rem 1rem;
+        background-color: #1a1a1a;
+        min-height: 100vh;
+      }
+
+      .report-card {
+        background-color: #2a2a2a;
+        padding: 2rem;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        max-width: 600px;
+        width: 100%;
+      }
+
+      .report-title {
+        color: #fff;
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #ddd;
+        font-weight: 600;
+      }
+
+      .required-label::after {
+        content: " *";
+        color: #e63946;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border-radius: 8px;
+        border: 1px solid #3a3a3a;
+        background-color: #3a3a3a;
+        color: #fff;
+        font-size: 1rem;
+        transition: background 0.3s ease, border 0.3s ease;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        background-color: #4a4a4a;
+        border-color: #a31d1d;
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .submit-btn {
+        background-color: #e63946;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        width: 100%;
+        transition: background 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        background-color: #d62839;
+      }
+
+      .submit-btn:disabled {
+        background-color: #8d8d8d;
+        cursor: not-allowed;
+      }
+
+      .error-message {
+        color: #ff6b6b;
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+        display: none;
+      }
+
+      .checkbox-group {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+      }
+
+      .checkbox-group input {
+        width: auto;
+        margin-right: 0.75rem;
+        margin-top: 0.3rem;
+      }
+
+      .checkbox-group label {
+        margin-bottom: 0;
+        font-weight: normal;
+        color: #ddd;
+        flex: 1;
+      }
+
+      .error-visible {
+        display: block;
+      }
+
+      .invalid {
+        border: 1px solid #ff6b6b !important;
+      }
+
+      .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .popup-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .popup-container {
+        background-color: #2a2a2a;
+        border-radius: 16px;
+        padding: 2rem;
+        max-width: 400px;
+        width: 90%;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+      }
+
+      .popup-overlay.active .popup-container {
+        transform: scale(1);
+      }
+
+      .popup-icon {
+        font-size: 4rem;
+        color: #2ecc71;
+        margin-bottom: 1rem;
+      }
+
+      .popup-title {
+        color: #fff;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .popup-message {
+        color: #ddd;
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+      }
+
+      .popup-close-btn {
+        background-color: #e63946;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background 0.3s ease;
+      }
+
+      .popup-close-btn:hover {
+        background-color: #d62839;
+      }
+
+      .footer-palorant {
+        background-color: #1a1a1a;
+        color: #f5f5f5;
+        padding: 40px 20px 20px;
+        font-size: 0.95rem;
+        position: relative;
+      }
+
+      .footer-palorant::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #a31d1d, transparent);
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .footer-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        opacity: 100;
+        transition: opacity 0.6s ease;
+      }
+
+      .footer-logo {
+        width: 48px;
+        height: 48px;
+      }
+
+      .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        justify-content: center;
+        margin-top: 15px;
+      }
+
+      .footer-nav a {
+        color: #f5f5f5;
+        text-decoration: none;
+        transition: color 0.3s ease, transform 0.3s ease;
+        position: relative;
+        font-size: 0.9rem;
+      }
+
+      .footer-socials {
+        margin: 24px 0;
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      .footer-socials img {
+        width: 24px;
+        height: 24px;
+        filter: brightness(0) invert(1);
+      }
+
+      .footer-bottom {
+        font-size: 0.85rem;
+        color: #ccc;
+      }
+
+      .footer-bottom p {
+        margin: 4px 0;
+        line-height: 1.5;
+      }
+
+      /* Server status indicator */
+      .server-status {
+        display: flex;
+        align-items: center;
+        margin-top: 0.5rem;
+      }
+
+      .status-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      .status-online {
+        background-color: #2ecc71;
+      }
+
+      .status-maintenance {
+        background-color: #f1c40f;
+      }
+
+      .status-offline {
+        background-color: #e74c3c;
+      }
+
+      .status-text {
+        font-size: 0.85rem;
+        color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Success Popup -->
+    <div class="popup-overlay" id="popupOverlay">
+      <div class="popup-container">
+        <div class="popup-content">
+          <div class="popup-icon">✓</div>
+          <h2 class="popup-title">Report Submitted!</h2>
+          <p class="popup-message">
+            Thank you for helping us improve Palorant. We'll review your report
+            soon.
+          </p>
+          <button class="popup-close-btn" id="popupCloseBtn">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-container">
+      <div class="container">
+        <div class="navbar-content">
+          <div class="logo-palorant">
+            <img
+              src="./assets/images/Palo2.png"
+              class="image-palorant"
+              alt="Logo"
+            />
+          </div>
+          <div class="nav-links">
+            <a href="./index.html" class="link">Home</a>
+            <a href="./agents.html" class="link">Agents</a>
+            <a href="./maps.html" class="link">Maps</a>
+            <a href="./news.html" class="link">News</a>
+            <a href="report.html" class="link active">Report</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-container">
+      <div class="report-card">
+        <h1 class="report-title">Report a Bug</h1>
+        <form id="bugReportForm">
+          <div class="form-group">
+            <label for="username" class="required-label">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter your in-game username"
+            />
+            <div class="error-message" id="usernameError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="required-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+            />
+            <div class="error-message" id="emailError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="server" class="required-label">Server</label>
+            <select id="server" name="server">
+              <option value="" disabled selected>--Select Server--</option>
+              <option value="na">North America</option>
+              <option value="eu">Europe</option>
+              <option value="ap">Asia Pacific</option>
+              <option value="kr">Korea</option>
+              <option value="latam">Latin America</option>
+            </select>
+            <div class="server-status" id="serverStatus"></div>
+            <div class="error-message" id="serverError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="bugType" class="required-label">Bug Type</label>
+            <select id="bugType" name="bugType">
+              <option value="" disabled selected>--Select Bug Type--</option>
+              <option value="gameplay">Gameplay</option>
+              <option value="ui">UI/Visual</option>
+              <option value="performance">Performance</option>
+              <option value="crash">Game Crash</option>
+              <option value="network">Network/Connection</option>
+              <option value="sound">Sound/Audio</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="error-message" id="bugTypeError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="required-label">Description</label>
+            <textarea
+              id="description"
+              name="description"
+              placeholder="Please provide as much detail as possible about the bug. Include steps to reproduce, when it occurred, and how it affects gameplay."
+            ></textarea>
+            <div class="error-message" id="descriptionError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="reproducibility" class="required-label"
+              >How often does this bug occur?</label
+            >
+            <select id="reproducibility" name="reproducibility">
+              <option value="" disabled selected>--Select Frequency--</option>
+              <option value="always">Always (100% of the time)</option>
+              <option value="often">
+                Often (approximately 75% of the time)
+              </option>
+              <option value="sometimes">
+                Sometimes (approximately 50% of the time)
+              </option>
+              <option value="rarely">
+                Rarely (approximately 25% of the time)
+              </option>
+              <option value="once">Only happened once</option>
+            </select>
+            <div class="error-message" id="reproducibilityError"></div>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="consent" name="consent" />
+            <label for="consent" class="required-label">
+              I give permission for the Palorant team to contact me for
+              additional information regarding this bug report.
+            </label>
+            <div class="error-message" id="consentError"></div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            Submit Report
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <section class="cta-section">
+      <footer class="footer-palorant">
+        <div class="footer-container">
+          <div class="footer-top">
+            <img
+              src="./assets/images/giotWhite-01.png"
+              alt="Palorant Logo"
+              class="footer-logo"
+            />
+            <nav class="footer-nav">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">About Us</a>
+              <a href="#">Contact Us</a>
+              <a href="#">Help Center</a>
+            </nav>
+          </div>
+
+          <div class="footer-socials footer-socials active">
+            <a href="#"
+              ><img src="./assets/images/Facebook (2).png" alt="Facebook"
+            /></a>
+            <a href="#"
+              ><img src="./assets/images/Instagram.png" alt="Instagram"
+            /></a>
+            <a href="#"
+              ><img src="./assets/images/Youtube.png" alt="YouTube"
+            /></a>
+          </div>
+
+          <div class="footer-bottom active">
+            <p>&copy; 2025 Palorant. All rights reserved.</p>
+            <p>Fan-made project inspired by Palorant universe.</p>
+          </div>
+        </div>
+      </footer>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("bugReportForm");
+        const popupOverlay = document.getElementById("popupOverlay");
+        const popupCloseBtn = document.getElementById("popupCloseBtn");
+        const submitBtn = document.getElementById("submitBtn");
+
+        // Form elements
+        const username = document.getElementById("username");
+        const email = document.getElementById("email");
+        const server = document.getElementById("server");
+        const bugType = document.getElementById("bugType");
+        const description = document.getElementById("description");
+        const reproducibility = document.getElementById("reproducibility");
+        const consent = document.getElementById("consent");
+
+        // Error elements
+        const usernameError = document.getElementById("usernameError");
+        const emailError = document.getElementById("emailError");
+        const serverError = document.getElementById("serverError");
+        const bugTypeError = document.getElementById("bugTypeError");
+        const descriptionError = document.getElementById("descriptionError");
+        const reproducibilityError = document.getElementById(
+          "reproducibilityError"
+        );
+        const consentError = document.getElementById("consentError");
+
+        // Server status indicator
+        const serverStatus = document.getElementById("serverStatus");
+
+        // Update server status when server is selected
+        server.addEventListener("change", function () {
+          const selectedServer = this.value;
+          let statusHTML = "";
+
+          if (selectedServer) {
+            // Simulate different server statuses (in a real app this would come from API)
+            const statuses = {
+              na: { status: "online", text: "Online" },
+              eu: { status: "online", text: "Online" },
+              ap: { status: "maintenance", text: "Maintenance" },
+              kr: { status: "online", text: "Online" },
+              latam: { status: "offline", text: "Connection Issues" },
+            };
+
+            const serverInfo = statuses[selectedServer];
+            statusHTML = `
+              <div class="status-dot status-${serverInfo.status}"></div>
+              <span class="status-text">${serverInfo.text}</span>
+            `;
+          }
+
+          serverStatus.innerHTML = statusHTML;
+        });
+
+        // Validation functions
+        function validateUsername(value) {
+          if (!value) {
+            return "Username is required";
+          }
+          if (value.length < 3 || value.length > 16) {
+            return "Username must be between 3 and 16 characters";
+          }
+          // Only allow alphanumeric characters and underscores
+          if (!/^[a-zA-Z0-9_]+$/.test(value)) {
+            return "Username can only contain letters, numbers, and underscores";
+          }
+          return "";
+        }
+
+        function validateEmail(value) {
+          if (!value) {
+            return "Email is required";
+          }
+          // Basic email validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value)) {
+            return "Please enter a valid email address";
+          }
+          return "";
+        }
+
+        function validateServer(value) {
+          if (!value) {
+            return "Please select a server";
+          }
+          return "";
+        }
+
+        function validateBugType(value) {
+          if (!value) {
+            return "Please select a bug type";
+          }
+          return "";
+        }
+
+        function validateDescription(value) {
+          if (!value) {
+            return "Description is required";
+          }
+          if (value.length < 20) {
+            return "Please provide a more detailed description (at least 20 characters)";
+          }
+          return "";
+        }
+
+        function validateReproducibility(value) {
+          if (!value) {
+            return "Please select how often the bug occurs";
+          }
+          return "";
+        }
+
+        function validateConsent(checked) {
+          if (!checked) {
+            return "You must give consent to submit the report";
+          }
+          return "";
+        }
+
+        // Validation event handlers
+        username.addEventListener("blur", function () {
+          const error = validateUsername(this.value.trim());
+          showError(this, usernameError, error);
+        });
+
+        email.addEventListener("blur", function () {
+          const error = validateEmail(this.value.trim());
+          showError(this, emailError, error);
+        });
+
+        server.addEventListener("change", function () {
+          const error = validateServer(this.value);
+          showError(this, serverError, error);
+        });
+
+        bugType.addEventListener("change", function () {
+          const error = validateBugType(this.value);
+          showError(this, bugTypeError, error);
+        });
+
+        description.addEventListener("blur", function () {
+          const error = validateDescription(this.value.trim());
+          showError(this, descriptionError, error);
+        });
+
+        reproducibility.addEventListener("change", function () {
+          const error = validateReproducibility(this.value);
+          showError(this, reproducibilityError, error);
+        });
+
+        consent.addEventListener("change", function () {
+          const error = validateConsent(this.checked);
+          showError(this, consentError, error);
+        });
+
+        // Helper function to show errors
+        function showError(input, errorElement, errorMessage) {
+          if (errorMessage) {
+            input.classList.add("invalid");
+            errorElement.textContent = errorMessage;
+            errorElement.classList.add("error-visible");
+            return false;
+          } else {
+            input.classList.remove("invalid");
+            errorElement.textContent = "";
+            errorElement.classList.remove("error-visible");
+            return true;
+          }
+        }
+
+        // Form submission
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Validate all fields
+          const usernameValid = showError(
+            username,
+            usernameError,
+            validateUsername(username.value.trim())
+          );
+          const emailValid = showError(
+            email,
+            emailError,
+            validateEmail(email.value.trim())
+          );
+          const serverValid = showError(
+            server,
+            serverError,
+            validateServer(server.value)
+          );
+          const bugTypeValid = showError(
+            bugType,
+            bugTypeError,
+            validateBugType(bugType.value)
+          );
+          const descriptionValid = showError(
+            description,
+            descriptionError,
+            validateDescription(description.value.trim())
+          );
+          const reproducibilityValid = showError(
+            reproducibility,
+            reproducibilityError,
+            validateReproducibility(reproducibility.value)
+          );
+          const consentValid = showError(
+            consent,
+            consentError,
+            validateConsent(consent.checked)
+          );
+
+          // Check if all validations passed
+          if (
+            usernameValid &&
+            emailValid &&
+            serverValid &&
+            bugTypeValid &&
+            descriptionValid &&
+            reproducibilityValid &&
+            consentValid
+          ) {
+            // Disable submit button to prevent multiple submissions
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Submitting...";
+
+            // Simulate form submission (in a real app, this would be an AJAX request)
+            setTimeout(() => {
+              // Show success popup
+              popupOverlay.classList.add("active");
+
+              // Reset form
+              form.reset();
+              serverStatus.innerHTML = "";
+
+              // Re-enable submit button
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Submit Report";
+            }, 1000);
+          } else {
+            // Scroll to the first error
+            const firstError = document.querySelector(".error-visible");
+            if (firstError) {
+              firstError.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              });
+            }
+          }
+        });
+
+        // Real-time validation
+        const formInputs = form.querySelectorAll("input, select, textarea");
+        formInputs.forEach((input) => {
+          input.addEventListener("input", function () {
+            // Remove error styling as user types
+            if (input.classList.contains("invalid")) {
+              input.classList.remove("invalid");
+              const errorId = input.id + "Error";
+              const errorElement = document.getElementById(errorId);
+              if (errorElement) {
+                errorElement.textContent = "";
+                errorElement.classList.remove("error-visible");
+              }
+            }
+          });
+        });
+
+        // Close popup
+        popupCloseBtn.addEventListener("click", () => {
+          popupOverlay.classList.remove("active");
+        });
+      });
+    </script>
+  </body>
+</html>
