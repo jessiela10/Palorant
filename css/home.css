@@ -445,7 +445,6 @@ img {
     transform: translateY(20px);
     transition: transform 0.5s ease, filter 0.3s ease, opacity 0.5s ease;
     position: relative;
-    /* cursor: pointer; */
 }
 
 .agent-card.active {
@@ -1067,14 +1066,6 @@ img {
     left: 100%;
 }
 
-/* Enhanced Agent Card Hover */
-/* .agent-card {
-    width: 180px;
-    transition: transform 0.5s ease, filter 0.3s ease, opacity 0.5s ease;
-    position: relative;
-    cursor: pointer;
-} */
-
 .agent-card:hover {
     transform: scale(1.08) translateY(-10px);
     animation: floatUp 3s ease infinite;
@@ -1258,7 +1249,7 @@ img {
     animation: borderFlow 2s infinite;
 }
 
-/* Enhanced Footer Interactive Elements */
+
 .footer-logo:hover {
     transform: rotate(15deg) scale(1.15);
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));

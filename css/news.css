@@ -47,7 +47,6 @@ body {
     padding: 0 16px;
 }
 
-/* Keep your original navbar styles */
 .logo-palorant {
     width: 32px;
     height: 32px;
@@ -107,7 +106,6 @@ body {
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease;
     position: relative;
-    /* <<< TAMBAHKAN INI */
 }
 
 .link:hover {
@@ -147,7 +145,6 @@ body {
     }
 }
 
-/* News Header */
 .maps-hero {
     background-color: var(--navbar-bg);
     background-size: cover;
@@ -186,7 +183,6 @@ body {
     color: var(--text-secondary);
 }
 
-/* News Container */
 .news-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -194,7 +190,6 @@ body {
     margin-bottom: 60px;
 }
 
-/* Featured News Item */
 .news-item.featured {
     display: grid;
     grid-template-columns: 1fr;
@@ -219,7 +214,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* News Grid */
 .news-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -298,7 +292,7 @@ body {
     color: #fff;
 }
 
-/* Pagination */
+
 .news-pagination {
     display: flex;
     justify-content: center;
@@ -328,7 +322,6 @@ body {
     background-color: var(--accent-color);
 }
 
-/* Keep your original footer styles */
 .footer-palorant {
     background-color: #1a1a1a;
     color: #f5f5f5;
@@ -444,7 +437,6 @@ body {
     margin: 4px 0;
 }
 
-/* Responsive styles */
 @media (min-width: 768px) {
     .news-item.featured {
         grid-template-columns: 1fr 1fr;
@@ -485,9 +477,6 @@ body {
     }
 }
 
-/* Add these styles to your existing news.css */
-
-/* Detailed News View */
 .news-detail {
     max-width: 1200px;
     margin: 0 auto;
@@ -562,7 +551,6 @@ body {
     color: white;
 }
 
-/* Responsive styles for detail view */
 @media (max-width: 768px) {
     .detailed-image {
         height: 250px;

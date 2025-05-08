@@ -335,7 +335,6 @@ img {
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease;
     position: relative;
-    /* <<< TAMBAHKAN INI */
 }
 
 .link:hover {
@@ -854,9 +853,6 @@ main {
     z-index: 10;
 }
 
-/* Add these media queries at the end of your existing CSS */
-
-/* For tablets and smaller desktops */
 @media (max-width: 1024px) {
     .title {
         font-size: 4rem;
@@ -871,7 +867,6 @@ main {
     }
 }
 
-/* For tablets */
 @media (max-width: 768px) {
     .title {
         font-size: 3.5rem;
@@ -919,7 +914,6 @@ main {
     }
 }
 
-/* For mobile devices */
 @media (max-width: 576px) {
 
     .header {
@@ -976,7 +970,6 @@ main {
     }
 }
 
-/* For very small mobile devices */
 @media (max-width: 400px) {
     .title {
         font-size: 2rem;
@@ -1026,7 +1019,6 @@ main {
     flex-shrink: 0;
 }
 
-/* Ensure the ability section has proper layout */
 .ability {
     display: flex;
     align-items: flex-start;
