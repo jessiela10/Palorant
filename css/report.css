@@ -699,7 +699,7 @@ textarea {
 .error-message {
     color: #ff6b6b;
     font-size: 0.85rem;
-    margin-top: 0.5rem;
+    margin-top: 1 rem;
     display: none;
 }
 
@@ -980,7 +980,7 @@ textarea {
 .error-message {
     color: #ff6b6b;
     font-size: 0.85rem;
-    margin-top: -0.5rem;
+    margin-top: 1rem;
     margin-bottom: 0.5rem;
     display: none;
 }
